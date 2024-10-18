@@ -1,6 +1,7 @@
 import { ConfigModule } from '@nestjs/config';
 import * as path from 'path';
 import appConfig from './app.config';
+import databaseConfig from 'src/typeorm/database.config';
 
 export const importConfigModule = () => {
   return ConfigModule.forRoot({
@@ -11,6 +12,6 @@ export const importConfigModule = () => {
       path.resolve(__dirname, `../../.env.${process.env.NODE_ENV}`),
       path.resolve(__dirname, '../../.env'),
     ],
-    load: [appConfig],
+    load: [appConfig, databaseConfig],
   });
 };
