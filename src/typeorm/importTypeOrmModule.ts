@@ -1,5 +1,6 @@
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Cat } from 'src/cats/entities/cat.entity';
 
 export const importTypeOrmModule = () => {
   return TypeOrmModule.forRootAsync({
@@ -14,7 +15,7 @@ export const importTypeOrmModule = () => {
         password: configService.get<string>('database.password'),
         database: configService.get<string>('database.database'),
         synchronize: configService.get<boolean>('database.synchronize'),
-        entities: [],
+        entities: [Cat],
       };
     },
   });
